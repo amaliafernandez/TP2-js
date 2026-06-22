@@ -3,22 +3,18 @@
 // descendente. Si, por ejemplo, la tabla es de 7x5  los números irán del 35 al 1.
 
 const pantalla = document.getElementById("pantalla")
+const fila = parseInt(prompt("Ingresa el número de filas deseados: "))
+const columnas = parseInt(prompt("Ingresa el número de columnas deseados: "))
+let celdas = fila * columnas
 //pantalla.textContent = "hola mundo" text.content solo imprime texto
 
-pantalla.innerHTML += `
-<table className="table table-striped">
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-    </tbody>
-</table>
-`
-
+let tabla = `<table class="table table-striped"><tbody>`
+for (let indiceFilas = 1; indiceFilas <= fila; indiceFilas++) {
+    tabla += `<tr>`
+    for (let indiceColumna = 1; indiceColumna <= columnas; indiceColumna++) {
+        tabla += `<td>${celdas--}</td>`
+    }
+    tabla += `</tr>`
+}
+tabla += `</tbody></table>`
+pantalla.innerHTML = tabla
